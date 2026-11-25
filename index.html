@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f7f4">
+  <title>CampusKind — Volunteer Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <a class="logo" href="#dashboard"><span class="logo-mark">✳</span><span>campus<span class="logo-accent">kind</span><small>VOLUNTEER HUB</small></span></a>
+  <div class="campus-switch"><span class="campus-dot">LPU</span><span><b>Lovely Professional University</b><small>Campus workspace</small></span><span class="chevron">⌄</span></div>
+  <p class="nav-label">WORKSPACE</p>
+  <nav class="main-nav">
+    <a href="#dashboard" data-page="dashboard" class="nav-link active"><span>▦</span> Overview</a>
+    <a href="#activities" data-page="activities" class="nav-link"><span>✳</span> Discover activities <em id="nav-activity-count">6</em></a>
+    <a href="#my-hours" data-page="my-hours" class="nav-link"><span>◷</span> My volunteer hours</a>
+    <a href="#certificates" data-page="certificates" class="nav-link"><span>▤</span> Certificates</a>
+    <p class="nav-label nav-label-gap">ORGANIZER</p>
+    <a href="#verification" data-page="verification" class="nav-link"><span>✓</span> Verify submissions <em class="alert-count" id="pending-count">0</em></a>
+    <a href="#manage" data-page="manage" class="nav-link"><span>⚙</span> Manage activities</a>
+    <a href="#reports" data-page="reports" class="nav-link"><span>▥</span> Reports & analytics</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="help-card"><span class="help-icon">?</span><b>Need a hand?</b><p>Find answers about logging your service hours.</p><button id="help-button">Visit help center <span>→</span></button></div>
+    <div class="user-card"><div class="avatar">AS</div><div><b id="sidebar-name">Alex Student</b><small>Student account</small></div><button id="profile-menu" aria-label="Profile menu">···</button></div>
+  </div>
+</aside>
+
+<main class="main-shell">
+  <header class="topbar">
+    <button id="mobile-menu" class="icon-button mobile-menu" aria-label="Open menu">☰</button>
+    <div class="breadcrumb"><span>Lovely Professional University</span><i>/</i><b id="crumb-title">Overview</b></div>
+    <div class="top-actions">
+      <span class="today-label" id="today-label"></span>
+      <button class="icon-button" id="notification-button" aria-label="Notifications">♧<span class="notification-dot"></span></button>
+      <button class="role-switch" id="role-switch"><span class="role-dot"></span><span id="role-label">Student view</span><span>⌄</span></button>
+    </div>
+  </header>
+
+  <div class="content-wrap">
+    <section class="page-view active" id="page-dashboard">
+      <div class="welcome-row">
+        <div><p class="overline" id="welcome-date">WELCOME BACK</p><h1>Good morning, <span id="greeting-name">Alex</span> <span class="wave">✦</span></h1><p class="subheading">A little time can make a big difference. Here's your impact so far.</p></div>
+        <button class="button button-green" data-go="activities">＋ Find an activity</button>
+      </div>
+      <section class="hero-card">
+        <div class="hero-copy"><span class="hero-tag"><span>✳</span> YOUR IMPACT, IN ACTION</span><h2>Show up for your<br>community.</h2><p>Discover meaningful ways to give back, meet people, and make your campus a better place.</p><button class="button button-light" data-go="activities">Explore activities <span>→</span></button></div>
+        <div class="hero-art"><div class="hero-circle circle-one"></div><div class="hero-circle circle-two"></div><div class="hero-plant">🌱</div><div class="hero-note"><span>✦</span><b>Good things<br>grow here</b></div><div class="hero-spark s1">✳</div><div class="hero-spark s2">✧</div></div>
+      </section>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-top"><span>VERIFIED HOURS</span><span class="stat-symbol symbol-green">◷</span></div><strong id="stat-verified">0</strong><p><span class="trend">↑ Keep it growing</span> toward your goal</p></article>
+        <article class="stat-card"><div class="stat-top"><span>ACTIVITIES JOINED</span><span class="stat-symbol symbol-peach">✳</span></div><strong id="stat-joined">0</strong><p>Experiences that matter</p></article>
+        <article class="stat-card"><div class="stat-top"><span>HOURS IN REVIEW</span><span class="stat-symbol symbol-yellow">⌛</span></div><strong id="stat-pending">0</strong><p>Waiting for organizer review</p></article>
+        <article class="stat-card"><div class="stat-top"><span>CERTIFICATES EARNED</span><span class="stat-symbol symbol-lilac">▤</span></div><strong id="stat-certs">0</strong><p>Ready to view and download</p></article>
+      </div>
+      <div class="dashboard-grid">
+        <section class="panel upcoming-panel"><div class="panel-head"><div><span class="section-kicker">GOOD THINGS AHEAD</span><h3>Upcoming activities</h3></div><button class="link-button" data-go="activities">View all <span>→</span></button></div><div id="dashboard-activities" class="compact-list"></div></section>
+        <section class="panel goal-panel"><div class="panel-head"><div><span class="section-kicker">YOUR YEARLY GOAL</span><h3>20 hours of impact</h3></div><span class="goal-icon">✦</span></div><div class="goal-number"><b id="goal-hours">0</b><span>of 20 hours</span></div><div class="progress"><span id="goal-progress"></span></div><div class="goal-foot"><span id="goal-message">You're just getting started. Find your first activity!</span><b id="goal-percent">0%</b></div><div class="goal-tip"><span>💡</span><p><b>Did you know?</b> Regular volunteers report feeling more connected to their community.</p></div></section>
+      </div>
+      <section class="panel impact-panel"><div class="panel-head"><div><span class="section-kicker">YOUR CONTRIBUTION</span><h3>Recent volunteer history</h3></div><button class="link-button" data-go="my-hours">See history <span>→</span></button></div><div id="dashboard-history"></div></section>
+    </section>
+
+    <section class="page-view" id="page-activities">
+      <div class="page-heading"><div><span class="section-kicker">FIND YOUR WAY TO GIVE BACK</span><h1>Discover activities</h1><p>Choose something meaningful. Your next great experience is waiting.</p></div><button class="button button-green organizer-only" data-go="manage">＋ Create activity</button></div>
+      <div class="activity-toolbar"><label class="search-input"><span>⌕</span><input id="activity-search" type="search" placeholder="Search activities, causes, or locations..."></label><select id="category-filter"><option value="All">All causes</option><option>Environment</option><option>Community</option><option>Education</option><option>Wellness</option><option>Animal Welfare</option></select><select id="date-filter"><option value="all">Any date</option><option value="soon">Coming soon</option></select><select id="sort-filter"><option value="date">Soonest first</option><option value="hours">Most hours</option></select></div>
+      <div class="results-line"><span id="activity-results">6 activities</span><span>Click an activity to register</span></div><div class="activity-grid" id="activity-grid"></div>
+    </section>
+
+    <section class="page-view" id="page-my-hours">
+      <div class="page-heading"><div><span class="section-kicker">YOUR SERVICE RECORD</span><h1>My volunteer hours</h1><p>Track every activity from registration to verified service.</p></div><button class="button button-outline" id="hours-export">↓ Export my report</button></div>
+      <div class="mini-stats"><div><span>Verified</span><b id="hours-verified-total">0 hrs</b></div><div><span>In review</span><b id="hours-pending-total">0 hrs</b></div><div><span>Activities</span><b id="hours-activity-total">0</b></div></div>
+      <div class="panel table-panel"><div class="table-heading"><h3>Service history</h3><select id="history-filter"><option value="All">All statuses</option><option>Joined</option><option>Pending</option><option>Verified</option><option>Rejected</option></select></div><div class="table-scroll"><table><thead><tr><th>ACTIVITY</th><th>DATE</th><th>HOURS</th><th>STATUS</th><th>DETAILS</th></tr></thead><tbody id="hours-table"></tbody></table></div><div id="hours-empty" class="empty-box hidden">No service history yet. <button class="link-button" data-go="activities">Explore activities →</button></div></div>
+    </section>
+
+    <section class="page-view" id="page-certificates">
+      <div class="page-heading"><div><span class="section-kicker">RECOGNITION FOR YOUR IMPACT</span><h1>Certificates</h1><p>Certificates become available after an organizer verifies your hours.</p></div></div>
+      <div class="certificate-banner"><div><span>✦ YOUR SERVICE MATTERS</span><h2>Every hour tells a story.</h2><p>Keep showing up. Your verified activity certificates will be collected here.</p></div><div class="certificate-banner-icon">🏅</div></div>
+      <div class="certificate-grid" id="certificate-grid"></div>
+    </section>
+
+    <section class="page-view" id="page-verification">
+      <div class="page-heading"><div><span class="section-kicker">ORGANIZER WORKSPACE</span><h1>Verify submissions</h1><p>Review attendance and approve student service hours.</p></div><span class="admin-badge">✓ ORGANIZER MODE</span></div>
+      <div class="review-summary"><div><span>Waiting for review</span><b id="review-pending-count">0</b></div><div><span>Hours awaiting approval</span><b id="review-pending-hours">0</b></div><div><span>Verified this month</span><b id="review-verified-count">0</b></div></div>
+      <div class="panel table-panel"><div class="table-heading"><h3>Attendance submissions</h3><select id="review-filter"><option value="Pending">Needs review</option><option value="All">All submissions</option><option value="Verified">Verified</option><option value="Rejected">Rejected</option></select></div><div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>ACTIVITY</th><th>ATTENDANCE</th><th>HOURS</th><th>STATUS / ACTION</th></tr></thead><tbody id="review-table"></tbody></table></div><div id="review-empty" class="empty-box hidden">Nothing to review right now. All caught up! ✨</div></div>
+    </section>
+
+    <section class="page-view" id="page-manage">
+      <div class="page-heading"><div><span class="section-kicker">ORGANIZER WORKSPACE</span><h1>Manage activities</h1><p>Create volunteer opportunities and manage your campus listings.</p></div><button class="button button-green" id="new-activity-button">＋ Create activity</button></div>
+      <div class="admin-overview"><div><span>Active listings</span><b id="manage-count">0</b></div><div><span>Total registrations</span><b id="manage-registrations">0</b></div><div><span>Hours available</span><b id="manage-hours">0</b></div></div>
+      <div class="panel table-panel"><div class="table-heading"><h3>Activity listings</h3><span class="muted">Manage availability or remove a listing</span></div><div class="table-scroll"><table><thead><tr><th>ACTIVITY</th><th>DATE</th><th>CAUSE</th><th>HOURS</th><th>REGISTRATIONS</th><th>ACTION</th></tr></thead><tbody id="manage-table"></tbody></table></div></div>
+    </section>
+
+    <section class="page-view" id="page-reports">
+      <div class="page-heading"><div><span class="section-kicker">CAMPUS-WIDE OVERVIEW</span><h1>Reports & analytics</h1><p>A snapshot of volunteer participation and service impact.</p></div><button class="button button-outline" id="report-export">↓ Download CSV report</button></div>
+      <div class="report-metrics"><div class="report-metric"><span>Total verified hours</span><b id="report-total-hours">0</b><small>Across all student records</small></div><div class="report-metric"><span>Hours awaiting review</span><b id="report-pending-hours">0</b><small>Submitted by students</small></div><div class="report-metric"><span>Student registrations</span><b id="report-registrations">0</b><small>Across listed activities</small></div><div class="report-metric"><span>Active activities</span><b id="report-activities">0</b><small>Open volunteer listings</small></div></div>
+      <div class="reports-grid"><div class="panel chart-panel"><div class="panel-head"><div><span class="section-kicker">SERVICE HOURS</span><h3>Hours by activity</h3></div><span class="chart-legend"><i></i> Verified hours</span></div><div id="hours-chart" class="bar-chart"></div></div><div class="panel category-panel"><div class="panel-head"><div><span class="section-kicker">WHERE STUDENTS HELP</span><h3>Activity categories</h3></div></div><div id="category-breakdown"></div></div></div>
+      <div class="panel table-panel report-table"><div class="table-heading"><h3>Student service summary</h3></div><div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>REGISTERED ACTIVITIES</th><th>VERIFIED HOURS</th><th>PENDING HOURS</th></tr></thead><tbody id="student-summary"></tbody></table></div></div>
+    </section>
+  </div>
+</main>
+<div class="modal-backdrop hidden" id="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" id="modal-close" aria-label="Close">×</button><div id="modal-content"></div></section></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
